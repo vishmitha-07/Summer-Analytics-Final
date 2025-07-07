@@ -8,13 +8,21 @@ This project implements an advanced dynamic pricing engine for smart parking sys
 
 2. Demand Function Design
 The demand function used is a sigmoid-based model that scales sharply around 60% occupancy. It includes the following factors:
-Factor	                  |      Contribution Logic
+
+Factor	                   |      Contribution Logic
+
 Occupancy                 |	Sigmoid growth: sharply increases when occupancy > 60%
+
 Queue Length              |	Scales linearly up to a capped value (max +0.3 contribution)
+
 Traffic Level             |	Linear multiplier (0.2 * traffic)
+
 Special Days              |	+0.3 boost in demand if it’s a holiday or event
+
 Vehicle Type	            |Adjusted weight: truck (+0.8), bike (-0.4), car (baseline)
+
 Final demand score is clipped to [0, 1] and directly influences the price scaling.
+
 
 3. Pricing Mechanism
 Base Price: $10
